@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>मराठी न्यूज़</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .header { background-color: #c0392b; color: white; padding: 15px 0; text-align: center; }
+        .header h1 { margin: 0; font-size: 24px; }
+        .container { max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+        .post { border-bottom: 1px solid #eee; padding: 20px 0; }
+        .post:last-child { border-bottom: none; }
+        .post h2 { color: #2c3e50; font-size: 20px; margin-bottom: 5px; }
+        .post p.date { color: #7f8c8d; font-size: 12px; margin-bottom: 10px; }
+        .post p.content { color: #34495e; line-height: 1.5; }
+        .no-posts { text-align: center; color: #7f8c8d; font-size: 18px; margin-top: 30px; }
+        .admin-btn { display: block; text-align: center; margin-top: 20px; }
+        .admin-btn a { background-color: #c0392b; color: white; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        
+        /* New Styles for Icons */
+        .post-footer { display: flex; align-items: center; justify-content: flex-start; margin-top: 15px; }
+        .icon-link { margin-right: 20px; font-size: 24px; text-decoration: none; }
+        .icon-link .fa-youtube { color: #FF0000; }
+        .icon-link .fa-instagram { color: #E4405F; }
+        .icon-link .fa-share-alt { color: #2c3e50; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📰 मराठी न्यूज़</h1>
+    </div>
+    <div class="container">
+        <% if (posts.length > 0) { %>
+            <% posts.forEach(function(post) { %>
+                <div class="post">
+                    <h2><%= post.title %></h2>
+                    <% if (post.imageUrl) { %>
+                        <img src="<%= post.imageUrl %>" alt="Post Image" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+                    <% } %>
+                    <p class="content"><%= post.content %></p>
+                    <p class="date">📅 <%= new Date(post.date).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'}) %>, <%= new Date(post.date).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) %></p>
+                    
+                    <div class="post-footer">
+                        <a href="YOUR_YOUTUBE_LINK_HERE" target="_blank" class="icon-link" aria-label="Visit our YouTube channel">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        
+                        <a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" class="icon-link" aria-label="Visit our Instagram page">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        
+                        <a href="#" class="icon-link" onclick="sharePost('<%= post.title %>', window.location.origin + '?postid=<%= post._id %>')" aria-label="Share this post">
+                            <i class="fas fa-share-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            <% }) %>
+        <% } else { %>
+            <div class="no-posts">No news posts found.</div>
+        <% } %>
+
+        <div class="admin-btn">
+            <a href="/admin/login">Admin Login</a>
+        </div>
+    </div>
+
+    <script>
+        function sharePost(title, url) {
+            // Check if the browser supports the Web Share API (native share dialog)
+            if (navigator.share) {
+                navigator.share({
+                    title: title,
+                    url: url
+                }).catch(error => console.error('Error sharing', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                alert('Share the link: ' + url);
+            }
+        }
+    </script>
+</body>
+</html>

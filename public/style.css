@@ -1,0 +1,117 @@
+/* ---------------------------------- */
+/* 1. Base Styles (Applies to all screens, mobile-first approach) */
+/* ---------------------------------- */
+body {
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+/* Ensure images don't overflow their containers */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Main content container adjustments */
+.container {
+    /* Override max-width for small screens to use full width */
+    max-width: 100%; 
+    padding: 10px; /* Reduced padding for mobile */
+    margin: 0; /* Remove margin on top/bottom/sides */
+    box-shadow: none; /* Remove shadows on mobile */
+    border-radius: 0;
+}
+
+/* Header adjustments */
+.header {
+    padding: 10px 0; /* Reduced header padding */
+}
+.header h1 {
+    font-size: 20px; /* Smaller header title on mobile */
+}
+
+/* Post list adjustments */
+.post {
+    padding: 15px 0; /* Adjusted padding */
+}
+.post h2 {
+    font-size: 18px; /* Smaller post title */
+}
+.post-footer {
+    justify-content: space-around; /* Spread the social icons out */
+    padding: 10px 0;
+}
+.icon-link {
+    margin-right: 0 !important; /* Remove specific right margin for better spacing */
+}
+
+/* Buttons and Links */
+.admin-btn a, button {
+    font-size: 14px;
+    padding: 8px 15px;
+    width: 100%; /* Make login buttons full width on mobile */
+    box-sizing: border-box;
+}
+
+/* Login Page specific adjustments */
+.login-box {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+}
+.login-box h2 {
+    font-size: 20px;
+}
+
+
+/* ---------------------------------- */
+/* 2. Media Queries (Adjustments for larger screens like tablets/desktops) */
+/* ---------------------------------- */
+@media (min-width: 600px) {
+    /* Revert styles for screens wider than 600px */
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+    .header h1 {
+        font-size: 24px;
+    }
+    .admin-btn a {
+        width: auto; /* Buttons don't need to be full width */
+    }
+    .post-footer {
+        justify-content: flex-start; /* Revert icons to left-aligned */
+    }
+    .icon-link {
+        margin-right: 20px !important;
+    }
+}
+
+/* ---------------------------------- */
+/* 3. Admin Dashboard Adjustments (admin.ejs) */
+/* ---------------------------------- */
+
+/* Ensure input fields are responsive */
+form input[type="text"], form textarea {
+    width: 100%;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Adjust manage list for smaller screens */
+.manage-list li {
+    flex-direction: column; /* Stack details and delete button vertically */
+    align-items: flex-start;
+}
+.delete-form {
+    margin-top: 10px;
+    margin-left: 0;
+    width: 100%;
+}
+.delete-form button {
+    width: 100%;
+}
