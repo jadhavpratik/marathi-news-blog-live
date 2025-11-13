@@ -1,0 +1,9 @@
+# Dependencies
+/node_modules
+
+# Environment Variables (Crucial for Security!)
+.env
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
