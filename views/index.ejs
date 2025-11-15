@@ -30,8 +30,13 @@
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>📰 मराठी न्यूज़</h1>
+    <div class="header-container">
+        <div class="header-title">
+            <h1>📰 नांदेड डायरी</h1>
+        </div>
+        <div class="header-admin-link">
+            <a href="/admin/login">Admin Login</a>
+        </div>
     </div>
     <div class="container">
         <% if (posts.length > 0) { %>
@@ -45,27 +50,25 @@
                     <p class="date">📅 <%= new Date(post.date).toLocaleDateString('en-GB', {year: 'numeric', month: '2-digit', day: '2-digit'}) %>, <%= new Date(post.date).toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit'}) %></p>
                     
                     <div class="post-footer">
-                        <a href="YOUR_YOUTUBE_LINK_HERE" target="_blank" class="icon-link" aria-label="Visit our YouTube channel">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        
-                        <a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank" class="icon-link" aria-label="Visit our Instagram page">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        
-                        <a href="#" class="icon-link" onclick="sharePost('<%= post.title %>', window.location.origin + '?postid=<%= post._id %>')" aria-label="Share this post">
-                            <i class="fas fa-share-alt"></i>
-                        </a>
-                    </div>
+    <a href="https://www.youtube.com/@bhagwanshewalelive8859" target="_blank" class="icon-link" aria-label="Visit our YouTube channel">
+        <i class="fab fa-youtube"></i>
+    </a>
+    
+    <a href="https://www.instagram.com/bhagwanshewalepatil?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="icon-link" aria-label="Visit our Instagram page">
+        <i class="fab fa-instagram"></i>
+    </a>
+    
+    <a href="#" class="icon-link" onclick="sharePost('<%= post.title %>', window.location.origin + '?postid=<%= post._id %>')" aria-label="Share this post">
+        <i class="fas fa-share-alt"></i>
+    </a>
+</div>
                 </div>
             <% }) %>
         <% } else { %>
             <div class="no-posts">No news posts found.</div>
         <% } %>
 
-        <div class="admin-btn">
-            <a href="/admin/login">Admin Login</a>
-        </div>
+    
     </div>
 
     <script>

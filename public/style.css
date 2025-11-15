@@ -25,9 +25,6 @@ img {
 }
 
 /* Header adjustments */
-.header {
-    padding: 10px 0; /* Reduced header padding */
-}
 .header h1 {
     font-size: 20px; /* Smaller header title on mobile */
 }
@@ -114,4 +111,47 @@ form input[type="text"], form textarea {
 }
 .delete-form button {
     width: 100%;
+}
+
+/* --- New Header Container Styles --- */
+.header-container {
+    background-color: #c0392b;
+    color: white;
+    padding: 15px 15px; /* Added horizontal padding */
+    
+    /* Flexbox for alignment */
+    display: flex;
+    justify-content: space-between; /* Pushes content to the edges */
+    align-items: center; /* Vertically center items */
+}
+
+.header-title h1 {
+    margin: 0; 
+    font-size: 24px;
+}
+
+.header-admin-link a {
+    color: white; /* Make the text white */
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid white; /* Optional: adds a border to make it look like a button */
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.header-admin-link a:hover {
+    background-color: #a5281a;
+}
+
+
+/* --- Mobile View Adjustment --- */
+@media (max-width: 600px) {
+    .header-title h1 {
+        font-size: 18px; /* Smaller title on mobile */
+    }
+    .header-admin-link a {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
 }
